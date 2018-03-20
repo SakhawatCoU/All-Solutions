@@ -1,1 +1,96 @@
+#include<bits/stdc++.h>
+#define lli long long int
+#define scf(n) scanf("%lld",&n)
+#define rep1(n) for(int i=1;i<=n;i++)
+#define prf(n) printf("%lld",n)
+#define sci(n) scanf("%d",&n)
+#define pri(n) printf("%d",n)
+#define prl(n) printf("%lld",n)
+#define scl(n) scanf("%lld",&n)
+#define nl printf("\n")
+#define spc printf(" ")
+#define file freopen("in.txt","rt",stdin)
+#define pii pair<int,int>
+#define piii pair<pii,int>
+using namespace std;
+
+/*bool sortBySec(const pair<int,int> &a,const pair<int,int> &b)
+{
+    return (a.second < b.second);
+}*/
+vector<int> edge[109];
+vector<int>ans;
+int visited[109];
+
+void DFS(int v,bool adj=false)
+{
+    if(visited[v]==1) return;
+
+    if(adj) visited[v] = 1;
+    for(int i=0; i<edge[v].size(); i++)
+        DFS(edge[v][i],true);
+}
+
+
+int main()
+{
+    // file;
+    int n,q,b;
+    int m,a;
+
+
+    while(sci(n)==1)
+    {
+        if(n==0)
+            break;
+        while(sci(m)==1)
+        {
+            if(m==0)
+                break;
+            while(sci(a)==1)
+            {
+                if(a==0)
+                    break;
+                edge[m].push_back(a);
+            }
+
+
+
+        }
+
+
+        sci(b);
+
+        for(int i=1; i<=b; i++)
+        {
+            int val;
+            memset(visited,0,sizeof visited);
+            sci(val);
+            DFS(val);
+            //cout<<endl;
+            int cnt = 0;
+            for(int i=1; i<=n; i++)
+            {
+                if(visited[i]==0)
+                {
+                    cnt++;
+                }
+            }
+            printf("%d",cnt);
+            for(int i=1; i<=n; i++)
+            {
+                if(visited[i]==0)
+                {
+                    printf(" %d",i);
+                }
+            }
+            printf("\n");
+
+
+        }
+        for(int i=0;i<=n;i++)
+            edge[i].clear();
+    }
+    return 0;
+}
 
